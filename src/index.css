@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 220 20% 97%;
+  --foreground: 220 10% 10%;
+
+  --card: 220 20% 92%;
+  --card-foreground: 220 10% 10%;
+
+  --popover: 220 20% 97%;
+  --popover-foreground: 220 10% 10%;
+
+  --primary: 160 100% 30%;
+  --primary-foreground: 220 20% 97%;
+
+  --secondary: 220 50% 80%;
+  --secondary-foreground: 220 10% 10%;
+
+  --muted: 220 50% 80%;
+  --muted-foreground: 220 10% 40%;
+
+  --accent: 280 100% 40%;
+  --accent-foreground: 220 20% 97%;
+
+  --destructive: 0 100% 40%;
+  --destructive-foreground: 220 20% 97%;
+
+  --border: 220 50% 80%;
+  --input: 220 50% 80%;
+  --ring: 160 100% 30%;
+
+  --radius: 0.5rem;
+
+  --sidebar-background: 220 20% 92%;
+  --sidebar-foreground: 220 10% 10%;
+  --sidebar-border: 220 50% 80%;
+  --sidebar-ring: 160 100% 30%;
+}
+
+:root[data-theme="dark"] {
+  --background: 220 20% 5%;
+  --foreground: 220 10% 98%;
+
+  --card: 220 20% 7%;
+  --card-foreground: 220 10% 98%;
+
+  --popover: 220 20% 5%;
+  --popover-foreground: 220 10% 98%;
+
+  --primary: 160 100% 50%;
+  --primary-foreground: 220 20% 5%;
+
+  --secondary: 220 50% 20%;
+  --secondary-foreground: 220 10% 98%;
+
+  --muted: 220 50% 20%;
+  --muted-foreground: 220 10% 70%;
+
+  --accent: 280 100% 50%;
+  --accent-foreground: 220 10% 98%;
+
+  --destructive: 0 100% 50%;
+  --destructive-foreground: 220 10% 98%;
+
+  --border: 220 50% 20%;
+  --input: 220 50% 20%;
+  --ring: 160 100% 50%;
+
+  --sidebar-background: 220 20% 7%;
+  --sidebar-foreground: 220 10% 98%;
+  --sidebar-border: 220 50% 20%;
+  --sidebar-ring: 160 100% 50%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Orbitron', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.parallax-container {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  perspective: 1px;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.parallax-layer-back {
+  transform: translateZ(-1px) scale(2);
+}
+
+.parallax-layer-base {
+  transform: translateZ(0);
+}
+
