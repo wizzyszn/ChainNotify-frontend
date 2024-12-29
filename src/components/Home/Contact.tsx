@@ -1,4 +1,3 @@
-import React from 'react'
 import { useSpring, animated } from '@react-spring/web'
 import { Mail, Phone, MapPin } from 'lucide-react'
 

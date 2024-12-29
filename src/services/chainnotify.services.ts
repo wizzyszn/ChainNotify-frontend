@@ -1,7 +1,5 @@
 import { GeneralReturnInt, Notifications, UserAuthInfoInt } from "@/types";
 import { options, requestHandler, urlGenerator } from "./config";
-import { BigNumber } from "ethers";
-import { NotificationState } from "@/redux/notification/notificationslice";
 /*import {
     DataInt,
     AuthReturnInt,

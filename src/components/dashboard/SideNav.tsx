@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Activity, BarChart2, Bell, Home, Settings } from "lucide-react";
+import { Bell, Home, Settings } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
