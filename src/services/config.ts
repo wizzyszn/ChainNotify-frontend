@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:5000/api/v1";
+const baseUrl = "https://chain-notify-backend.onrender.com/api/v1";
 
 const routeBaseUrl = {
     auth: `${baseUrl}/auth`,
@@ -22,7 +22,7 @@ const logRequestDetails = (url: string, options: RequestInit) => {
 
 // Helper function to generate options
 const options = <T>(
-    method: "GET" | "POST" | "PUT" | "DELETE",
+    method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH",
     data?: T,
     formData?: FormData
 ): RequestInit => {
@@ -97,7 +97,7 @@ const urlGenerator = (
     path: string,
     param: string = ""
 ) => {
-    return `${routeBaseUrl[key]}/${path}${param ? `?${param}` : ""}`;
+    return `${routeBaseUrl[key]}/${path}${param ? `/${param}` : ""}`;
 };
 
 export { urlGenerator, options, requestHandler };

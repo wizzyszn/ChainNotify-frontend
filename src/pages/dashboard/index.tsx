@@ -11,7 +11,7 @@ function DashboardLayout() {
   return (
         <ThemeProvider>
          <SidebarProvider>
-          <div className="flex h-screen bg-background w-full">
+          <div className="flex h-screen bg-background w-full overflow-auto">
             <Sidenav />
             <div className="flex-1 flex flex-col overflow-hidden">
               <header className="flex justify-between items-center p-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

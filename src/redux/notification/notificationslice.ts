@@ -1,16 +1,18 @@
 /// notification slice
 import { createSlice } from '@reduxjs/toolkit';
-import { getNotificationsRequest, markAllAsReadRequest, markAsReadRequest } from './notificationasync';
+import { getNotificationByIdRequest, getNotificationsRequest, markAllAsReadRequest, markAsReadRequest } from './notificationasync';
 import { Notifications } from '@/types';
 
 export interface NotificationState {
   notifications: Notifications[],
-  loading : boolean
+  loading : boolean,
+  notification : Notifications | undefined
 }
 
 const initialState: NotificationState = {
   notifications: [],
-  loading : false
+  loading : false,
+  notification : undefined
 };
 
 export const notificationSlice = createSlice({
@@ -33,6 +35,7 @@ export const notificationSlice = createSlice({
       state.loading = false;
 
       state.notifications = action.payload.data;
+      console.log(action.payload.data)
     }).addCase(getNotificationsRequest.rejected, (state) => {
       state.loading = false;
     })
@@ -52,7 +55,11 @@ export const notificationSlice = createSlice({
          ...notification,
          read: true
        }));
-     });
+     })
+     .addCase(getNotificationByIdRequest.fulfilled, (state,action) =>{
+      state.notification = action.payload.data
+     })
+    
   },
 });
 

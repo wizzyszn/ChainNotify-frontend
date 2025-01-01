@@ -5,7 +5,7 @@ import { Bell, Check } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+//import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { AppDispatch, RootState } from '@/redux/store'
 import { useDispatch, useSelector } from 'react-redux'
@@ -19,7 +19,7 @@ export function Notifications() {
   const dispatch = useDispatch<AppDispatch>()
   const user = Storages.getStorage("local", StorageKeysEnum.user) as UserAuthInfoInt;
   const { notifications } = useSelector((state: RootState) => state.notification)
-  const [tokenFilter, setTokenFilter] = useState('')
+  //const [tokenFilter, setTokenFilter] = useState('')
   const [dateFilter, setDateFilter] = useState('')
 
   useEffect(() => {
@@ -51,7 +51,8 @@ export function Notifications() {
         email: user?.email as string
       })).unwrap()
     } catch (error) {
-      console.error('Failed to mark all notifications as read:', error)
+      console.error('Failed to mark all notifications as read:', error);
+
     }
   }
 
@@ -69,19 +70,19 @@ export function Notifications() {
   }
 
   const filteredNotifications = notifications.filter(notif => {
-    const matchesToken = tokenFilter ? notif.token === tokenFilter : true
+    //const matchesToken = tokenFilter ? notif.token === tokenFilter : true
     const matchesDate = dateFilter ? format(new Date(notif.date), 'yyyy-MM-dd') === dateFilter : true
-    return matchesToken && matchesDate
+    return matchesDate
   })
 
   // Get unique tokens for the filter dropdown
-  const uniqueTokens = Array.from(new Set(notifications.map(notif => notif.token)))
+ // const uniqueTokens = Array.from(new Set(notifications.map(notif => notif.token)))
 
   return (
-    <div className="container mx-auto p-4">
-      <Card className="w-full">
+    <div className="container p-0">
+      <Card className="w-full ">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold flex items-center gap-2">
+          <CardTitle className="text-2xl font-bold flex items-center">
             <Bell className="h-6 w-6" />
             Notifications
           </CardTitle>
@@ -92,19 +93,7 @@ export function Notifications() {
         <CardContent>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
             <div className="flex flex-col md:flex-row gap-4">
-              <div className="flex items-center gap-2">
-                <Label htmlFor="token-filter">Filter by Token:</Label>
-                <Select value={tokenFilter} onValueChange={setTokenFilter}>
-                  <SelectTrigger id="token-filter" className="w-[180px]">
-                    <SelectValue placeholder="Select token" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {uniqueTokens.map(token => (
-                      <SelectItem key={token} value={token}>{token}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+            
               <div className="flex items-center gap-2">
                 <Label htmlFor="date-filter">Filter by Date:</Label>
                 <Input
@@ -144,7 +133,7 @@ export function Notifications() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={() => notif?._id && handleMarkAsRead(notif?._id)}
+                      onClick={() => notif?._id && handleMarkAsRead(notif?.hash)}
                     >
                       Mark as Read
                     </Button>

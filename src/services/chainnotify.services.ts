@@ -126,12 +126,18 @@ export const getAllTransactionsReq = (email : string) =>{
 
 //? Mark transaction as read
 export const markAsReadReq = (email : string, notificationId : string) =>{
-    const url = urlGenerator("wallet", "mark-as-read");
-    return requestHandler<GeneralReturnInt<Notifications>>(url,options("POST", {email, notificationId}));
+    const url = urlGenerator("wallet", "mark-as-read", `${notificationId}`);
+    return requestHandler<GeneralReturnInt<Notifications>>(url,options("POST", {email}));
 }
 
 //? Mark all transactions as read
 export const markAllAsReadReq = (email : string) =>{
     const url = urlGenerator("wallet", "mark-all-as-read");
     return requestHandler<GeneralReturnInt<Notifications>>(url,options("POST", {email}));
+}
+
+//?: get a transaction by id
+export const getNotificationByIdReq = (notificationId : string, email : string) =>{
+    const url = urlGenerator("wallet", "notification", `${notificationId}`);
+    return requestHandler<GeneralReturnInt<Notifications>>(url,options("POST",{email}));
 }

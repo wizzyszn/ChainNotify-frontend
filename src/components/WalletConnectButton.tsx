@@ -10,8 +10,10 @@ import {
   Card,
   CardContent,
 } from "@/components/ui/card";
-
-export function WalletConnectButton() {
+type Props = {
+  classname?: string;
+}
+export function WalletConnectButton({ classname} : Props) {
   const [walletState, setWalletState] = useState({
     address: "",
     balance: "",
@@ -198,7 +200,7 @@ export function WalletConnectButton() {
   };
 
   return (
-    <div className="space-y-4">
+    <div className={`space-y-4 ${classname} `}>
       {walletState.error && (
         <Alert variant="destructive">
           <AlertDescription className="text-xs">

@@ -30,8 +30,8 @@ export function Sidenav() {
           to="/"
           className="flex items-center text-white text-xl md:text-2xl font-bold"
         >
-          <Logo size={32} color="green" />
-          <span className="ml-2 text-primary">CryptoNotify</span>
+          <Logo size={32} />
+          <span className="ml-2 text-primary">ChainNotify</span>
         </Link>
       </SidebarHeader>
       <SidebarContent>

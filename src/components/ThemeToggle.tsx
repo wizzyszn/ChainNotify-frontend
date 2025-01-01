@@ -1,8 +1,12 @@
 import { useTheme } from '../contexts/ThemeContext';
 import { Moon, Sun } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-
-export function ThemeToggle() {
+type Props = {
+  classname ?: string
+}
+export function ThemeToggle({
+  classname
+} :Props) {
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -10,7 +14,7 @@ export function ThemeToggle() {
       variant="outline" 
       size="icon" 
       onClick={toggleTheme}
-      className="bg-background/50 backdrop-blur-sm"
+      className={` ${classname}  bg-background/50 backdrop-blur-sm`}
     >
       {theme === 'light' ? (
         <Sun className="h-[1.2rem] w-[1.2rem]" />
